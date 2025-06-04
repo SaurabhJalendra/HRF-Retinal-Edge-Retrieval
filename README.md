@@ -5,36 +5,36 @@
 [![scikit-image](https://img.shields.io/badge/scikit--image-0.25%2B-orange.svg)](https://scikit-image.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## 🔬 Project Overview
+## Project Overview
 
 This project implements a **Content-Based Image Retrieval (CBIR)** system specifically designed for retinal fundus images using the **High-Resolution Fundus (HRF)** dataset. The system employs advanced computer vision techniques and handcrafted feature engineering to enable efficient retrieval of similar retinal images based on visual content.
 
-### 🎯 Key Objectives
+### Key Objectives
 - Develop a robust CBIR system for medical image analysis
 - Extract and combine multiple handcrafted features for comprehensive image representation
 - Compare different feature engineering techniques for retinal image classification
 - Provide insights into feature importance and model performance
 
-## 📊 Dataset
+## Dataset
 
 **HRF (High-Resolution Fundus) Dataset**
 - **Total Images**: 45 high-resolution retinal fundus images
 - **Categories**: 
-  - 🟢 **Healthy**: 15 images
-  - 🔴 **Diabetic Retinopathy**: 15 images  
-  - 🟡 **Glaucoma**: 15 images
+  - **Healthy**: 15 images
+  - **Diabetic Retinopathy**: 15 images  
+  - **Glaucoma**: 15 images
 - **Resolution**: High-quality fundus photographs
-- **Format**: JPEG images with corresponding manual vessel segmentations
+- **Format**: JPEG/JPG images
 
-## 🚀 Features Implemented
+## Features Implemented
 
 ### 1. **Handcrafted Feature Extraction**
-- **📐 HOG (Histogram of Oriented Gradients)**: Captures edge and gradient information
-- **🔄 LBP (Local Binary Patterns)**: Analyzes local texture patterns
-- **⚡ Edge Detection**: Sobel, Canny, and Laplacian edge features
-- **🌊 Gabor Filters**: Texture analysis using frequency domain features
-- **📊 GLCM (Gray-Level Co-occurrence Matrix)**: Statistical texture descriptors
-- **🎨 Color Histograms**: RGB and HSV color distribution features
+- **HOG (Histogram of Oriented Gradients)**: Captures edge and gradient information
+- **LBP (Local Binary Patterns)**: Analyzes local texture patterns
+- **Edge Detection**: Sobel, Canny, and Laplacian edge features
+- **Gabor Filters**: Texture analysis using frequency domain features
+- **GLCM (Gray-Level Co-occurrence Matrix)**: Statistical texture descriptors
+- **Color Histograms**: RGB and HSV color distribution features
 
 ### 2. **Feature Combination Strategies**
 - Individual feature performance analysis
@@ -55,7 +55,7 @@ This project implements a **Content-Based Image Retrieval (CBIR)** system specif
 - Feature importance visualization
 - Cross-validation performance
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -72,7 +72,10 @@ cd HRF-Retinal-Edge-Retrieval
 2. **Create virtual environment**
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
 ```
 
 3. **Install dependencies**
@@ -81,6 +84,7 @@ pip install -r requirements.txt
 ```
 
 ### Required Libraries
+The project dependencies are specified in `requirements.txt`:
 ```
 opencv-python>=4.8.0
 scikit-image>=0.25.0
@@ -91,9 +95,14 @@ matplotlib>=3.7.0
 seaborn>=0.12.0
 jupyter>=1.0.0
 tqdm>=4.65.0
+pillow>=10.0.0
+scipy>=1.10.0
+joblib>=1.3.0
+ipykernel>=6.25.0
+notebook>=7.0.0
 ```
 
-## 📖 Usage
+## Usage
 
 ### Running the Jupyter Notebook
 ```bash
@@ -108,36 +117,23 @@ jupyter notebook HRF-Retinal-Edge-Retrieval.ipynb
 5. **Feature Importance Analysis**
 6. **Results Visualization**
 
-## 📈 Results
+## Results
+
+*Note: Results will be updated after running the complete analysis.*
 
 ### Model Performance Comparison
-| Feature Combination | Accuracy | Precision | Recall | F1-Score |
-|---------------------|----------|-----------|--------|----------|
-| HOG Only | 85.2% | 0.84 | 0.85 | 0.84 |
-| LBP Only | 78.9% | 0.79 | 0.79 | 0.79 |
-| Edge Detection Only | 72.3% | 0.73 | 0.72 | 0.72 |
-| HOG + LBP | 89.6% | 0.90 | 0.90 | 0.90 |
-| HOG + LBP + Edge | **92.1%** | **0.92** | **0.92** | **0.92** |
-| All Features | 91.8% | 0.92 | 0.92 | 0.92 |
+The notebook provides comprehensive analysis of different feature combinations and their performance on the HRF dataset.
 
 ### Key Insights
-- **Feature combination** significantly improves performance over individual features
-- **HOG features** are most discriminative for retinal image classification
-- **Texture features (LBP, GLCM)** provide complementary information
-- **Random Forest** performs best with combined features
+- Feature combination strategies and their effectiveness
+- Comparative analysis of different machine learning models
+- Feature importance rankings for retinal image classification
+- Performance metrics across different classification scenarios
 
-## 🔍 Technical Highlights
+## Technical Highlights
 
 ### Feature Engineering Pipeline
-```python
-# Example feature extraction workflow
-features = []
-features.extend(extract_hog_features(image))
-features.extend(extract_lbp_features(image))
-features.extend(extract_edge_features(image))
-features.extend(extract_gabor_features(image))
-features.extend(extract_glcm_features(image))
-```
+The project implements a comprehensive feature extraction pipeline combining multiple computer vision techniques for robust retinal image analysis.
 
 ### Model Evaluation Framework
 - **Stratified K-Fold Cross-Validation**
@@ -145,20 +141,21 @@ features.extend(extract_glcm_features(image))
 - **Feature importance ranking**
 - **Comprehensive visualization**
 
-## 📁 Project Structure
+## Project Structure
 ```
 HRF-Retinal-Edge-Retrieval/
-├── HRF/                              # Dataset directory
-│   ├── healthy/                      # Healthy retinal images
-│   ├── diabetic_retinopathy/         # DR images
-│   └── glaucoma/                     # Glaucoma images
-├── HRF-Retinal-Edge-Retrieval.ipynb # Main notebook
-├── README.md                         # Project documentation
-├── requirements.txt                  # Dependencies
-└── venv/                            # Virtual environment
+├── HRF/                                          # Dataset directory
+│   ├── healthy/                                  # Healthy retinal images (15 images)
+│   ├── diabetic_retinopathy/                     # DR images (15 images)
+│   └── glaucoma/                                 # Glaucoma images (15 images)
+├── venv/                                         # Virtual environment
+├── Connection Sensitive Attention U-NET...pdf   # Reference paper
+├── HRF-Retinal-Edge-Retrieval.ipynb            # Main notebook
+├── README.md                                     # Project documentation
+└── requirements.txt                              # Dependencies
 ```
 
-## 🎓 Educational Value
+## Educational Value
 
 This project demonstrates:
 - **Handcrafted feature engineering** in computer vision
@@ -167,7 +164,12 @@ This project demonstrates:
 - **Feature fusion** and selection strategies
 - **Performance evaluation** methodologies
 
-## 🤝 Contributing
+## Additional Resources
+
+- **Reference Paper**: Connection Sensitive Attention U-NET for Accurate Retinal Vessel Segmentation (included in repository)
+- **Dataset**: HRF (High-Resolution Fundus) database for vessel segmentation studies
+
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
@@ -175,24 +177,21 @@ This project demonstrates:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **HRF Dataset**: Thanks to the creators of the High-Resolution Fundus dataset
 - **OpenCV Community**: For excellent computer vision tools
 - **scikit-image**: For comprehensive image processing capabilities
 - **scikit-learn**: For machine learning implementations
 
-## 📞 Contact
+## Contact
 
-- **Author**: [Your Name]
-- **Email**: [your.email@example.com]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **Project Link**: [https://github.com/yourusername/HRF-Retinal-Edge-Retrieval](https://github.com/yourusername/HRF-Retinal-Edge-Retrieval)
+For questions or collaboration opportunities, please open an issue in this repository.
 
 ---
 
-⭐ **Star this repository if you found it helpful!**
+**Star this repository if you found it helpful!**
