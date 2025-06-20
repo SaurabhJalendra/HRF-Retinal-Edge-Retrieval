@@ -3,7 +3,6 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)](https://opencv.org/)
 [![scikit-image](https://img.shields.io/badge/scikit--image-0.25%2B-orange.svg)](https://scikit-image.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Project Overview
 
